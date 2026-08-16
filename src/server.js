@@ -1,3 +1,4 @@
+import { errors } from 'celebrate';
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
@@ -20,6 +21,7 @@ app.use(cors());
 app.use(notesRouter);
 
 app.use(notFoundHandler);
+app.use(errors());
 app.use(errorHandler);
 
 const startServer = async () => {
