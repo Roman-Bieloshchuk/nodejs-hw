@@ -1,11 +1,12 @@
-import { nanoid } from 'nanoid';
+import crypto from 'node:crypto';
 
 import { Session } from '../models/session.js';
+
 import { FIFTEEN_MINUTES, ONE_DAY } from '../constants/time.js';
 
 export const createSession = async (userId) => {
-  const accessToken = nanoid();
-  const refreshToken = nanoid();
+  const accessToken = crypto.randomBytes(30).toString('base64');
+  const refreshToken = crypto.randomBytes(30).toString('base64');
 
   const accessTokenValidUntil = new Date(Date.now() + FIFTEEN_MINUTES);
   const refreshTokenValidUntil = new Date(Date.now() + ONE_DAY);
