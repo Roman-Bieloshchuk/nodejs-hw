@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { celebrate, Segments } from 'celebrate';
+import { celebrate } from 'celebrate';
 
 import {
   registerUser,
@@ -29,17 +29,13 @@ router.post('/auth/logout', logoutUser);
 
 router.post(
   '/auth/request-reset-email',
-  celebrate({
-    [Segments.BODY]: requestResetEmailSchema,
-  }),
+  celebrate(requestResetEmailSchema),
   requestResetEmail,
 );
 
 router.post(
   '/auth/reset-password',
-  celebrate({
-    [Segments.BODY]: resetPasswordSchema,
-  }),
+  celebrate(resetPasswordSchema),
   resetPassword,
 );
 
